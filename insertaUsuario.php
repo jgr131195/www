@@ -29,8 +29,8 @@
         }
 
         if ($valido==3) {
-            $sql = "INSERT INTO usuarios (Usuario_nick, Usuario_clave, Usuario_email)
-            VALUES ('$nick', '$password_cod', '$mail')";
+            $sql = "INSERT INTO usuarios (Usuario_nick, Usuario_clave, Usuario_email, Usuario_bloqueado)
+            VALUES ('$nick', '$password_cod', '$mail', '1')";
             
             if ($conn->query($sql) === TRUE) {
                 echo "Alta correcta.";
