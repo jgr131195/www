@@ -33,13 +33,30 @@
             VALUES ('$nick', '$password_cod', '$mail', '1')";
             
             if ($conn->query($sql) === TRUE) {
+
+                $fecha = getdate();
+                $caracter = ["@","#","¬","&","%"];
+                $token = $fecha[0];
+                $token.=$caracter[mt_rand(0,4)];
+
+                $token_cod = password_hash($token, PASSWORD_DEFAULT);
+
+                //token
+                $sql = " UPDATE usuarios SET Usuario_token_aleatorio = '$token_cod' WHERE Usuario_email = '$mail'";
+                if ($conn->query($sql) === TRUE) {
+                   
+                    //redireccion 
+                    //header('Location: index.php');
+                } else {
+                    echo "Error: " . $sql . "<br>" . $conn->error;
+                }//token
+
                 echo "Alta correcta.";
             } else {
                 echo "Error: " . $sql . "<br>" . $conn->error;
             }        
             $conn->close();
-            //redireccion 
-            //header('Location: index.php');
+
         } else {
             echo "Datos invalidos.";
         }
