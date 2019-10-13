@@ -44,6 +44,31 @@
                 //token
                 $sql = " UPDATE usuarios SET Usuario_token_aleatorio = '$token_cod' WHERE Usuario_email = '$mail'";
                 if ($conn->query($sql) === TRUE) {
+                    $para = $mail;
+                    $titulo = "Confimacion de registro";
+                    $mensaje = "
+                        <!DOCTYPE html>
+                        <html>
+                        <head>
+                            <title></title>
+                            <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' />
+                        </head>
+                        <body>
+                            <p>Hola, le mandamos este correo para que confirme su registro en nuestro sitio web</p>
+                            <a href='https://juangandulloramirez.000webhostapp.com/desbloqueaConToken.php?token=$token_cod' class='btn btn-success'>Desbloquear</a>
+
+                        </body>
+                        </html> 
+                    ";
+                    $cabeceras = "";
+
+                    $enviado = mail($para, $titulo, $mensaje, $cabeceras);
+
+                    if ($enviado) {
+                        echo 'Email enviado';
+                    } else {
+                        echo 'Email error';
+                    }
                    
                     //redireccion 
                     //header('Location: index.php');
