@@ -60,7 +60,8 @@
                         </body>
                         </html> 
                     ";
-                    $cabeceras = "";
+                    $cabeceras = "MIME-version: 1.0";
+                    $cabeceras.= "Content-type: multipart/mixed;";
 
                     $enviado = mail($para, $titulo, $mensaje, $cabeceras);
 
