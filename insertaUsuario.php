@@ -17,8 +17,8 @@
         $password2 = $_POST['password2'];
         $regex = "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,10})$/";
 
-        session_start();
-        $_SESSION['email']  = $mail ;
+ //       session_start();
+ //       $_SESSION['email']  = $mail;
 
 
         if ($password==$password2) {

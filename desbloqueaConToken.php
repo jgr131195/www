@@ -10,17 +10,26 @@
 <body>
     <?php 
         include_once "conexion.php"; //conexion BD
+ /*
         session_start();
         $mail = $_SESSION['email'];
         session_unset();
         session_destroy();
-
+*/
         $token_cod = $_GET["token"];
-
+        echo $token_cod;
+/*
         $sql = "SELECT Usuario_token_aleatorio FROM usuarios where Usuario_email = '$mail'";
         if ($conn->query($sql) === TRUE) {
             if (password_verify ( string $password , string $token_cod )) {
-                include_once "desloqueaSQL.php"; 
+                $sql = " UPDATE usuarios SET Usuario_bloqueado = '0' WHERE Usuario_email = '$mail'";
+                if ($conn->query($sql) === TRUE) {
+                    echo "Usuario desbloqueado";
+                
+                } else {
+                    echo "Error: " . $sql . "<br>" . $conn->error;
+                }        
+                $conn->close();
             } else {
                 echo "Error desbloqueo";
             }
@@ -28,7 +37,7 @@
             echo "Error: " . $sql . "<br>" . $conn->error;
         }        
         $conn->close();
-
+*/
     ?>
 </body>
 </html>
