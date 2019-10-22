@@ -10,11 +10,24 @@
 <body>
     <?php 
         include_once "conexion.php"; //conexion BD
- 
-        $token = $_GET["token"];
+        session_start();
+        $mail = $_SESSION['email'];
+        session_unset();
+        session_destroy();
 
-        
+        $token_cod = $_GET["token"];
 
+        $sql = "SELECT Usuario_token_aleatorio FROM usuarios where Usuario_email = '$mail'";
+        if ($conn->query($sql) === TRUE) {
+            if (password_verify ( string $password , string $token_cod )) {
+                include_once "desloqueaSQL.php"; 
+            } else {
+                echo "Error desbloqueo";
+            }
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }        
+        $conn->close();
 
     ?>
 </body>
