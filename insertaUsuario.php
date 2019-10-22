@@ -17,10 +17,6 @@
         $password2 = $_POST['password2'];
         $regex = "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,10})$/";
 
- //       session_start();
- //       $_SESSION['email']  = $mail;
-
-
         if ($password==$password2) {
             $password_cod = password_hash($password, PASSWORD_DEFAULT);
             $valido++;
@@ -46,7 +42,7 @@
                 $token_cod = password_hash($token, PASSWORD_DEFAULT);
 
                 //token
-                $sql = " UPDATE usuarios SET Usuario_token_aleatorio = '$token' WHERE Usuario_email = '$mail'";
+                $sql = " UPDATE usuarios SET Usuario_token_aleatorio = '$token_cod' WHERE Usuario_email = '$mail'";
                 if ($conn->query($sql) === TRUE) {
                     $para = $mail;
                     $titulo = "Confimacion de registro";
@@ -91,6 +87,9 @@
         } else {
             echo "Datos invalidos.";
         }
+      
+
+
     ?>
 </body>
 </html>
