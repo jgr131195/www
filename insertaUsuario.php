@@ -55,7 +55,7 @@
                         </head>
                         <body>
                             <p>Hola, le mandamos este correo para que confirme su registro en nuestro sitio web</p>
-                            <a href='https://juangandulloramirez.000webhostapp.com/desbloqueaConToken.php?token=$token_cod' class='btn btn-success'>Desbloquear</a>
+                            <a href='https://juangandulloramirez.000webhostapp.com/desbloqueaConToken.php?token=$token_cod&mail=$mail' class='btn btn-success'>Desbloquear</a>
 
                         </body>
                         </html> 
